@@ -1,0 +1,132 @@
+body {
+    background-color: black;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    font-family: "Indie Flower", cursive;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.images {
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+
+.back {
+    animation: fade-out-up 2s ease-in-out forwards, flicker 0.5s infinite alternate;
+}
+
+@keyframes fade-out-up {
+    0% {
+        opacity: 0.2;
+        transform: translateY(-180%);
+    }
+
+    100% {
+        opacity: 0.8;
+        transform: translateY(-10%);
+    }
+}
+
+@keyframes flicker {
+    0% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 0.6;
+    }
+}
+
+.note {
+    display: flex;
+    max-width: 98%;
+    min-height: 70%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    color: red;
+    background-color: azure;
+    border: 4px solid white;
+    border-radius: 10px;
+    font-size: 140px;
+    margin-right: 2%;
+    margin-left: 2%;
+    margin-bottom: 5%;
+    padding: 3%;
+    padding-bottom: 5%;
+}
+
+.note #content {
+    text-align: center;
+}
+
+#TGO-Icon {
+    position: relative;
+    text-align: center;
+    opacity: 0.7;
+}
+
+.techs {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin: 6px;
+    background-color: transparent;
+    text-align: center;
+}
+
+/* small smartphones */
+@media only screen and (max-width: 480px) {
+    .note {
+        font-size: 36px;
+        min-height: 60%;
+
+    }
+
+    .techs {
+        width: 40px;
+        height: 40px;
+        margin: 3px;
+    }
+}
+
+/* smartphones and small tablets */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+    .note {
+        font-size: 48px;
+        min-height: 60%;
+
+    }
+
+    .techs {
+        width: 60px;
+        height: 60px;
+        margin: 3px;
+    }
+}
+
+/* tablets */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    .note {
+        font-size: 80px;
+        min-height: 60%;
+    }
+
+    .techs {
+        width: 70px;
+        height: 70px;
+        margin: 5px;
+    }
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 2px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
