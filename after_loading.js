@@ -1,4 +1,5 @@
-let playMusic = new Audio("https://the-green-one-game.s3.us-west-004.backblazeb2.com/music.mp3");
+let playMusic = new Audio("https://the-green-one-game.s3.us-west-004.backblazeb2.com/music.wav");
+
 window.onload = function () {
     playMusic.play();
     playMusic.loop = true;
@@ -7,9 +8,11 @@ window.onload = function () {
         intro.style.display = "none";
     }, 2000);
 };
+
 function turnMusic() {
     playMusic.pause();
 }
+
 $(document).ready(function () {
     getDeviceWidth();
     getVersion();
@@ -19,6 +22,7 @@ $(document).ready(function () {
         $("#DownloadNote").slideUp(1300);
     });
 });
+
 function getVersion() {
     const url = "https://MohabJoumaa.github.io";
     var versionReq = new XMLHttpRequest();
@@ -31,6 +35,7 @@ function getVersion() {
     versionReq.open("GET", url, true);
     versionReq.send();
 }
+
 function paint() {
     var i;
     const canvas = document.getElementById("graphics");
@@ -48,4 +53,5 @@ function paint() {
     }
     tgoY -= 4;
 }
+
 window.setInterval(paint, 100);
