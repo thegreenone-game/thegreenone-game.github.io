@@ -85,10 +85,21 @@ const cur = document.getElementById('cur');
     reveals.forEach(r => observer.observe(r));
 
     let musicOn = false;
+
     function toggleMusic() {
         const btn = document.getElementById('music-btn');
         const icon = document.getElementById('music-icon');
+        const music = document.getElementById('bg-music');
+
         musicOn = !musicOn;
+
         btn.classList.toggle('muted', !musicOn);
-        icon.className = musicOn ? 'fas fa-volume-up' : 'fas fa-music';
+
+        if (musicOn) {
+            music.play();
+            icon.className = 'fas fa-volume-up';
+        } else {
+            music.pause();
+            icon.className = 'fas fa-music';
+        }
     }
