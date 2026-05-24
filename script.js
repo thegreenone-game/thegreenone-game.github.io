@@ -37,8 +37,8 @@ const cur = document.getElementById('cur');
     let W, H;
 
     function resize() {
-        W = canvas.width  = canvas.offsetWidth  || window.innerWidth;
-        H = canvas.height = canvas.offsetHeight || window.innerHeight;
+        W = canvas.width = window.innerWidth;
+        H = canvas.height = window.innerHeight;
     }
     resize();
     window.addEventListener('resize', resize, { passive: true });
