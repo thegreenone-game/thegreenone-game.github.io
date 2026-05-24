@@ -142,7 +142,7 @@
             pointer-events: none; z-index: 1;
         } */
         #hero-canvas {
-            position: fixed;
+            position: absolute;
             inset: 0;
 
             width: 100vw;
