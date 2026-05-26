@@ -643,3 +643,25 @@
             .dl-stats { flex-direction: column; gap: 28px; }
             .dl-stat-sep { width: 60px; height: 1px; align-self: auto; }
         }
+    
+        .lang-switcher {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .lang-switcher button {
+            background: transparent;
+            border: 1px solid rgba(57,255,110,0.3);
+            color: var(--green);
+            padding: 6px 10px;
+            font-size: 10px;
+            cursor: pointer;
+            font-family: var(--pixel);
+            transition: 0.2s;
+        }
+
+.lang-switcher button:hover {
+    background: var(--green3);
+    box-shadow: var(--glow-sm);
+}
