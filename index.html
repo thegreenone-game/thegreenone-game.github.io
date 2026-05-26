@@ -1,378 +1,475 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <title>The Green One — By Muhab Joumaa</title>
-        <meta charset="UTF-8">
-    <meta name="description" content="Enter The Adventure Of The Green One By Muhab Joumaa">
-    <meta name="keywords" content="TGO, The Green One, Muhab Joumaa, Game, Java, C++, Programming, Online, Platform, Action-Adventure">
-    <meta name="author" content="Muhab Joumaa">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="The Green One Game">
-    <meta property="og:description" content="Enter The Adventure Of The Green One By Muhab Joumaa">
-    <meta property="og:image" content="https://the-green-one-game.s3.us-west-004.backblazeb2.com/tgo-bg.png">
-    <link rel="icon" href="https://the-green-one-game.s3.us-west-004.backblazeb2.com/tgo-bg.png"/>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" crossorigin="anonymous">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
-</head>
-<body>
+    <head>
+        <title>The Green One — By Muhab Joumaa</title>
+        <meta charset="UTF-8" />
+        <meta name="description" content="Enter The Adventure Of The Green One By Muhab Joumaa" />
+        <meta
+            name="keywords"
+            content="TGO, The Green One, Muhab Joumaa, Game, Java, C++, Programming, Online, Platform, Action-Adventure"
+        />
+        <meta name="author" content="Muhab Joumaa" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta property="og:title" content="The Green One Game" />
+        <meta property="og:description" content="Enter The Adventure Of The Green One By Muhab Joumaa" />
+        <meta property="og:image" content="https://the-green-one-game.s3.us-west-004.backblazeb2.com/tgo-bg.png" />
+        <link rel="icon" href="https://the-green-one-game.s3.us-west-004.backblazeb2.com/tgo-bg.png" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Rajdhani:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+            crossorigin="anonymous"
+        />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet" />
+        <link rel="stylesheet" href="styles.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+    </head>
+    <body>
+        <div class="cursor" id="cur"></div>
+        <div class="cursor-ring" id="cur-ring"></div>
 
-    <div class="cursor" id="cur"></div>
-    <div class="cursor-ring" id="cur-ring"></div>
+        <button id="music-btn" title="Toggle Music" onclick="toggleMusic()">
+            <i class="fas fa-music" id="music-icon"></i>
+        </button>
+        <audio id="bg-music" loop preload="auto">
+            <source src="https://the-green-one-game.s3.us-west-004.backblazeb2.com/music.wav" type="audio/mpeg" />
+        </audio>
 
-    <button id="music-btn" title="Toggle Music" onclick="toggleMusic()">
-        <i class="fas fa-music" id="music-icon"></i>
-    </button>
-    <audio id="bg-music" loop preload="auto">
-        <source src="https://the-green-one-game.s3.us-west-004.backblazeb2.com/music.wav" type="audio/mpeg">
-    </audio>
-
-    <nav id="navbar">
-        <a class="nav-logo" href="#">TGO</a>
-        <ul class="nav-links">
-            <li><a href="#about-section" data-i18n="nav_about">About</a></li>
-            <li><a href="#tech-section" data-i18n="nav_tech">Tech</a></li>
-            <li><a href="#gallery-section" data-i18n="nav_gallery">Gallery</a></li>
-            <li><a href="#download-section" data-i18n="nav_download">Download</a></li>
-        </ul>
-        <div class="lang-switcher">
-            <button onclick="setLanguage('en')">EN</button>
-            <button onclick="setLanguage('de')">DE</button>
-            <button onclick="setLanguage('ar')">AR</button>
-            <button onclick="setLanguage('ru')">RU</button>
-        </div>
-        <a class="nav-cta" href="https://muhab-joumaa.itch.io/the-green-one" target="_blank" data-i18n="nav_play">
-            Play for $1.00 &nbsp;<i class="fas fa-arrow-right"></i>
-        </a>
-    </nav>
-
-    <canvas id="hero-canvas"></canvas>
-    <div id="hero">
-        <div class="hero-ambient"></div>
-        <!-- SVG unchanged -->
-        <div class="hero-content">
-            <div class="hero-eyebrow" data-i18n="hero_eyebrow">INDIE GAME · WINDOWS</div>
-            <h1 class="hero-title" data-text="THE GREEN ONE">THE GREEN ONE</h1>
-            <span class="hero-sub" data-i18n="hero_sub">
-                Survive. Fight. <em>Escape.</em> — A solo-crafted adventure<br>by <em>Muhab Joumaa</em>
-            </span>
-            <div class="hero-actions">
-                <a href="https://muhab-joumaa.itch.io/the-green-one" target="_blank" class="btn-neon" data-i18n="hero_download">
-                    <i class="fas fa-download"></i> Download for $1.00
-                </a>
-                <a href="#gallery-section" class="btn-ghost" data-i18n="hero_gallery">
-                    <i class="fas fa-images"></i> View Gallery
-                </a>
+        <nav id="navbar">
+            <a class="nav-logo" href="#">TGO</a>
+            <ul class="nav-links">
+                <li><a href="#about-section" data-i18n="nav_about">About</a></li>
+                <li><a href="#tech-section" data-i18n="nav_tech">Tech</a></li>
+                <li><a href="#gallery-section" data-i18n="nav_gallery">Gallery</a></li>
+                <li><a href="#download-section" data-i18n="nav_download">Download</a></li>
+            </ul>
+            <div class="lang-switcher">
+                <button onclick="setLanguage('en')">EN</button>
+                <button onclick="setLanguage('de')">DE</button>
+                <button onclick="setLanguage('ar')">AR</button>
+                <button onclick="setLanguage('ru')">RU</button>
             </div>
-        </div>
+            <a class="nav-cta" href="https://muhab-joumaa.itch.io/the-green-one" target="_blank" data-i18n="nav_play">
+                Play for $1.00 &nbsp;<i class="fas fa-arrow-right"></i>
+            </a>
+        </nav>
 
-        <div class="hero-char-wrap">
-            <img class="hero-char"
-                src="https://the-green-one-game.s3.us-west-004.backblazeb2.com/rsz-tgo.png"
-                alt="The Green One character">
-            <div class="hero-char-glow"></div>
-        </div>
-
-        <div class="scroll-cue" data-i18n="scroll_text">
-            <div class="scroll-bar"></div>
-            SCROLL
-        </div>
-    </div>
-
-    <div class="section-wrap" id="about-section">
-        <section>
-            <div id="about-inner">
-                <div class="about-body">
-                    <div class="label rv" data-i18n="about_label">01 — About</div>
-                    <h2 class="sec-title rv rv-delay-1" data-i18n="about_title">Survive The <em>Mountains</em></h2>
-                    <div class="rv rv-delay-2">
-                        <p data-i18n="about_p1">Enter the world of <strong>The Green One</strong> — a solo-crafted action-adventure platformer where survival is the only goal.</p>
-                        <p data-i18n="about_p2">Every mechanic, every system, every line of code was <strong>handcrafted by one developer</strong>.</p>
-                    </div>
-                </div>
-                <div class="feature-grid rv rv-delay-3">
-                    <div class="feat">
-                        <span class="feat-icon"><i class="fas fa-mountain"></i></span>
-                        <span class="feat-name" data-i18n="feat1_name">Mountain Survival</span>
-                        <div class="feat-desc" data-i18n="feat1_desc">Navigate deadly terrain with precise platformer mechanics.</div>
-                    </div>
-                    <div class="feat">
-                        <span class="feat-icon"><i class="fas fa-biohazard"></i></span>
-                        <span class="feat-name" data-i18n="feat2_name">Zombie Combat</span>
-                        <div class="feat-desc" data-i18n="feat2_desc">Fight and outsmart waves of relentless undead enemies.</div>
-                    </div>
-                    <div class="feat">
-                        <span class="feat-icon"><i class="fas fa-network-wired"></i></span>
-                        <span class="feat-name" data-i18n="feat3_name">Built-in Network</span>
-                        <div class="feat-desc" data-i18n="feat3_desc">A social networking feature built directly inside the game.</div>
-                    </div>
-                    <div class="feat">
-                        <span class="feat-icon"><i class="fas fa-tools"></i></span>
-                        <span class="feat-name" data-i18n="feat4_name">Solo Engineered</span>
-                        <div class="feat-desc" data-i18n="feat4_desc">Every system engineered by a single developer.</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <div class="section-wrap alt" id="tech-section">
-        <section id="tech">
-            <div class="tech-header rv">
-                <div class="label" data-i18n="tech_label">02 — Technology</div>
-                <h2 class="sec-title" data-i18n="tech_title">Built With <em>Precision</em></h2>
-                <p class="tech-desc" data-i18n="tech_desc">Engineered from scratch using industry-grade languages and tools.</p>
-            </div>
-                        <div class="tech-grid rv rv-delay-1">
-                <div class="tech-pill">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original-wordmark.svg" alt="Java">
-                    <span>Java</span>
-                </div>
-                <div class="tech-pill">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++">
-                    <span>C++</span>
-                </div>
-                <div class="tech-pill">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C">
-                    <span>C</span>
-                </div>
-                <div class="tech-pill">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opengl/opengl-plain.svg" alt="OpenGL">
-                    <span>OpenGL</span>
-                </div>
-                <div class="tech-pill">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original-wordmark.svg" alt="OpenCV">
-                    <span>OpenCV</span>
-                </div>
-                <div class="tech-pill">
-                    <img src="https://the-green-one-game.s3.us-west-004.backblazeb2.com/JavaFX_Logo.png" alt="JavaFX">
-                    <span>JavaFX</span>
-                </div>
-                <div class="tech-pill">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original-wordmark.svg" alt="Blender">
-                    <span>Blender</span>
-                </div>
-                <div class="tech-pill">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
-                    <span>JavaScript</span>
-                </div>
-                <div class="tech-pill">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original-wordmark.svg" alt="jQuery">
-                    <span>jQuery</span>
-                </div>
-                <div class="tech-pill">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg" alt="MySQL">
-                    <span>MySQL</span>
-                </div>
-                <div class="tech-pill">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/neo4j/neo4j-original-wordmark.svg" alt="Neo4j">
-                    <span>Neo4j</span>
-                </div>
-                <div class="tech-pill">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original-wordmark.svg" alt="HTML5">
-                    <span>HTML5</span>
-                </div>
-                <div class="tech-pill">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original-wordmark.svg" alt="CSS3">
-                    <span>CSS3</span>
-                </div>
-                <div class="tech-pill">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matlab/matlab-original.svg" alt="Matlab">
-                    <span>Matlab</span>
-                </div>
-                <div class="tech-pill">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original-wordmark.svg" alt="Git">
-                    <span>Git</span>
-                </div>
-                <div class="tech-pill">
-                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg" alt="Photoshop">
-                    <span>Photoshop</span>
-                </div>
-            </div>
-        </section>
-    </div>
-    
-    <div class="section-wrap" id="gallery-section">
-        <section id="gallery">
-            <div class="label rv" data-i18n="gallery_label">03 — Gallery</div>
-            <h2 class="sec-title rv rv-delay-1" data-i18n="gallery_title">See The <em>World</em></h2>
-                        <div class="gallery-container rv rv-delay-2">
-                <div class="fotorama"
-                    data-autoplay="3500"
-                    data-arrows="true"
-                    data-swipe="true"
-                    data-click="true"
-                    data-loop="true"
-                    data-fit="contain"
-                    data-width="100%"
-                    data-ratio="16/9"
-                    data-nav="thumbs"
-                    data-thumbwidth="80"
-                    data-thumbheight="52">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMzAzMDM2MC5wbmc=/original/V%2BAA66.png">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzMzMC5qcGc=/original/2JaGC2.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzMzMi5qcGc=/original/VGkH1F.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzMzMS5qcGc=/original/wPeIh2.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xNzU3MjM5NC5wbmc=/original/b6fI1M.png">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xODM4MDI4Ny5wbmc=/original/BHn2H8.png">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzMzNC5qcGc=/original/YZ%2FXEm.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM0Mi5qcGc=/original/JU1H1A.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xODE5MDY1OC5wbmc=/original/2lJGnn.png">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM0MS5qcGc=/original/QEFt82.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xODQ5NzU5Ni5qcGc=/original/p%2B%2FLel.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzMzNi5qcGc=/original/k1bCM7.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzMzOS5qcGc=/original/HhAJc9.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM0MC5qcGc=/original/7pcD9a.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzMzOC5qcGc=/original/z13jGk.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM0NC5wbmc=/original/QwbnBP.png">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM0My5qcGc=/original/0he4fL.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM0OS5qcGc=/original/ieRpLF.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM1MC5qcGc=/original/YNxyPU.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xNTMxOTU0Ni5wbmc=/original/ZJWhRp.png">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xNTMxOTU0Ny5wbmc=/original/9hGDwr.png">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM1My5qcGc=/original/Wfqftc.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM1Mi5qcGc=/original/XNOJ%2BE.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xNTMxOTU0NS5wbmc=/original/yXPGTg.png">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xNzkwMDE3My5qcGc=/original/Ur5xg1.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM1OS5qcGc=/original/VW2P8E.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM2Mi5qcGc=/original/ihYIcw.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM1OC5qcGc=/original/zzyvIz.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM2MS5qcGc=/original/iSQKaL.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM2My5qcGc=/original/%2BgEm2Z.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM2MC5qcGc=/original/5rANCh.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM3MC5qcGc=/original/3%2B%2FHOs.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM2OC5qcGc=/original/TDpQju.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xNzYxMjEwMC5qcGc=/original/RIbG%2FQ.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM3MS5qcGc=/original/TtYUkN.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM2OS5qcGc=/original/wuOuMY.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xNTIzMjE1NS5wbmc=/original/u0IR8m.png">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjk4ODY5My5wbmc=/original/3wl%2Fkn.png">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM3Ni5qcGc=/original/XFr91F.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM4MC5qcGc=/original/IwURos.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM3OS5qcGc=/original/1UQiNf.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM3NC5qcGc=/original/USdsZ1.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjk4ODY5Mi5wbmc=/original/Y2gTEa.png">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM3My5qcGc=/original/uVP9pw.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM3Ny5qcGc=/original/OjrYj%2F.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM3NS5qcGc=/original/QMqIpr.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM4Mi5qcGc=/original/%2FcMbEZ.jpg">
-        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xODIyODE2MC5qcGc=/original/O2iFyH.jpg">
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <div class="section-wrap alt" id="download-section">
-        <section id="download">
-            <div class="label rv" data-i18n="download_label">04 — Download</div>
-            <h2 class="sec-title rv rv-delay-1" data-i18n="download_title">Play For <em>$1.00</em></h2>
-            <div class="dl-card rv rv-delay-2">
-                <div class="dl-stats">
-                    <div class="dl-stat">
-                        <span class="dl-stat-val">$1.00</span>
-                        <div class="dl-stat-lbl" data-i18n="price_lbl">Price</div>
-                    </div>
-                    <div class="dl-stat-sep"></div>
-                    <div class="dl-stat">
-                        <span class="dl-stat-val">205MB</span>
-                        <div class="dl-stat-lbl" data-i18n="size_lbl">Size</div>
-                    </div>
-                    <div class="dl-stat-sep"></div>
-                    <div class="dl-stat">
-                        <span class="dl-stat-val">WIN</span>
-                        <div class="dl-stat-lbl" data-i18n="platform_lbl">Platform</div>
-                    </div>
-                </div>
-                                <div class="itch-wrap">
-                    <iframe
-                        src="https://itch.io/embed/1876309?bg_color=020802&fg_color=39ff6e&link_color=1db954&border_color=0c1a0c"
-                        width="552" height="167" frameborder="0">
-                        <a href="https://muhab-joumaa.itch.io/the-green-one">The Green One By Muhab Joumaa</a>
-                    </iframe>
-                </div>
-                <div class="dl-badge">
-                    <i class="fas fa-circle" style="font-size:7px; color:var(--green); animation: blink-badge 1.5s infinite;"></i>
-                    <span data-i18n="latest_version">VERSION: LATEST</span>
-                </div>
-            </div>
-        </section>
-    </div>
-    
-    <div class="section-wrap" id="expansion-section">
-        <section>
-            <div id="expansion-inner">
-                <div class="expansion-img rv">
-                    <img src="https://the-green-one-game.s3.us-west-004.backblazeb2.com/tgo-eobl.png"
-                        alt="The Green One: End of Being Lost">
-                    <div class="expansion-badge">NEW</div>
-                </div>
-                <div class="expansion-text rv rv-delay-2">
-                    <div class="label" data-i18n="expansion_label">05 — Expansion</div>
-                    <h2 class="sec-title" data-i18n="expansion_title">End Of <em>Being Lost</em></h2>
-                    <p data-i18n="expansion_desc">A new chapter has arrived.</p>
-                    <a href="https://muhab-joumaa.itch.io/the-green-one-end-of-being-lost"
-                        target="_blank" class="btn-danger" data-i18n="expansion_btn">
-                        <i class="fas fa-external-link-alt"></i> Explore Now
+        <canvas id="hero-canvas"></canvas>
+        <div id="hero">
+            <div class="hero-ambient"></div>
+            <!-- SVG unchanged -->
+            <div class="hero-content">
+                <div class="hero-eyebrow" data-i18n="hero_eyebrow">INDIE GAME · WINDOWS</div>
+                <h1 class="hero-title" data-text="THE GREEN ONE">THE GREEN ONE</h1>
+                <span class="hero-sub" data-i18n="hero_sub">
+                    Survive. Fight. <em>Escape.</em> — A solo-crafted adventure<br />by <em>Muhab Joumaa</em>
+                </span>
+                <div class="hero-actions">
+                    <a
+                        href="https://muhab-joumaa.itch.io/the-green-one"
+                        target="_blank"
+                        class="btn-neon"
+                        data-i18n="hero_download"
+                    >
+                        <i class="fas fa-download"></i> Download for $1.00
+                    </a>
+                    <a href="#gallery-section" class="btn-ghost" data-i18n="hero_gallery">
+                        <i class="fas fa-images"></i> View Gallery
                     </a>
                 </div>
             </div>
-        </section>
-    </div>
-    
-    <div class="section-wrap alt">
-        <section id="network">
-            <div class="label rv" data-i18n="network_label">06 — Network</div>
-            <h2 class="sec-title rv rv-delay-1" data-i18n="network_title">Connected <em>Community</em></h2>
-            <div class="network-box rv rv-delay-2">
-                <div class="net-icon">
-                    <img src="https://the-green-one-game.s3.us-west-004.backblazeb2.com/tgo-network-bg.png" alt="TGO Network">
-                </div>
-                <div class="net-text">
-                    <h3 data-i18n="network_name">TGO NETWORK</h3>
-                    <p data-i18n="network_desc">A full social network is built directly into the game.</p>
-                    <div class="net-pill" data-i18n="network_pill">FREE TO JOIN · BUILT-IN</div>
-                </div>
-            </div>
-        </section>
-    </div>
 
-    <div class="section-wrap" id="sponsor-section">
-        <section id="sponsor">
-            <div class="label rv" data-i18n="support_label">07 — Support</div>
-            <h2 class="sec-title rv rv-delay-1" data-i18n="support_title">Support The <em>Developer</em></h2>
-            <p class="rv rv-delay-2" style="text-align:center; max-width:560px; margin: 0 auto 2rem;" data-i18n="support_desc">
-              If you enjoy the game or appreciate the work behind it, consider sponsoring the development of future projects.
-            </p>
-            <div class="rv rv-delay-3" style="display:flex; justify-content:center;">
-                <iframe 
-                 src="https://github.com/sponsors/MuhabJoumaa/card" 
-                 title="Sponsor MuhabJoumaa" 
-                 height="225" 
-                 width="600" 
-                 style="border: 0;">
-               </iframe>
+            <div class="hero-char-wrap">
+                <img
+                    class="hero-char"
+                    src="https://the-green-one-game.s3.us-west-004.backblazeb2.com/rsz-tgo.png"
+                    alt="The Green One character"
+                />
+                <div class="hero-char-glow"></div>
             </div>
-        </section>
-    </div>
 
-    <footer>
-        <div class="footer-brand">THE GREEN ONE</div>
-        <div class="footer-copy" data-i18n="footer_copy">&copy; 2023 Muhab Joumaa · All rights reserved</div>
-        <div class="footer-links">
-            <a href="https://www.facebook.com/mohab.jmah" target="_blank" title="Facebook">
-                <i class="fab fa-facebook"></i>
-            </a>
-            <a href="https://muhab-joumaa.itch.io/the-green-one" target="_blank" title="Itch.io">
-                <i class="fas fa-gamepad"></i>
-            </a>
-            <a href="https://github.com/MuhabJoumaa" target="_blank" title="GitHub">
-                <i class="fab fa-github"></i>
-            </a>
+            <div class="scroll-cue" data-i18n="scroll_text">
+                <div class="scroll-bar"></div>
+                SCROLL
+            </div>
         </div>
-    </footer>
-    <script src="script.js"></script>
-</body>
+
+        <div class="section-wrap" id="about-section">
+            <section>
+                <div id="about-inner">
+                    <div class="about-body">
+                        <div class="label rv" data-i18n="about_label">01 — About</div>
+                        <h2 class="sec-title rv rv-delay-1" data-i18n="about_title">Survive The <em>Mountains</em></h2>
+                        <div class="rv rv-delay-2">
+                            <p data-i18n="about_p1">
+                                Enter the world of <strong>The Green One</strong> — a solo-crafted action-adventure
+                                platformer where survival is the only goal.
+                            </p>
+                            <p data-i18n="about_p2">
+                                Every mechanic, every system, every line of code was
+                                <strong>handcrafted by one developer</strong>.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="feature-grid rv rv-delay-3">
+                        <div class="feat">
+                            <span class="feat-icon"><i class="fas fa-mountain"></i></span>
+                            <span class="feat-name" data-i18n="feat1_name">Mountain Survival</span>
+                            <div class="feat-desc" data-i18n="feat1_desc">
+                                Navigate deadly terrain with precise platformer mechanics.
+                            </div>
+                        </div>
+                        <div class="feat">
+                            <span class="feat-icon"><i class="fas fa-biohazard"></i></span>
+                            <span class="feat-name" data-i18n="feat2_name">Zombie Combat</span>
+                            <div class="feat-desc" data-i18n="feat2_desc">
+                                Fight and outsmart waves of relentless undead enemies.
+                            </div>
+                        </div>
+                        <div class="feat">
+                            <span class="feat-icon"><i class="fas fa-network-wired"></i></span>
+                            <span class="feat-name" data-i18n="feat3_name">Built-in Network</span>
+                            <div class="feat-desc" data-i18n="feat3_desc">
+                                A social networking feature built directly inside the game.
+                            </div>
+                        </div>
+                        <div class="feat">
+                            <span class="feat-icon"><i class="fas fa-tools"></i></span>
+                            <span class="feat-name" data-i18n="feat4_name">Solo Engineered</span>
+                            <div class="feat-desc" data-i18n="feat4_desc">
+                                Every system engineered by a single developer.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="section-wrap alt" id="tech-section">
+            <section id="tech">
+                <div class="tech-header rv">
+                    <div class="label" data-i18n="tech_label">02 — Technology</div>
+                    <h2 class="sec-title" data-i18n="tech_title">Built With <em>Precision</em></h2>
+                    <p class="tech-desc" data-i18n="tech_desc">
+                        Engineered from scratch using industry-grade languages and tools.
+                    </p>
+                </div>
+                <div class="tech-grid rv rv-delay-1">
+                    <div class="tech-pill">
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original-wordmark.svg"
+                            alt="Java"
+                        />
+                        <span>Java</span>
+                    </div>
+                    <div class="tech-pill">
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg"
+                            alt="C++"
+                        />
+                        <span>C++</span>
+                    </div>
+                    <div class="tech-pill">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C" />
+                        <span>C</span>
+                    </div>
+                    <div class="tech-pill">
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opengl/opengl-plain.svg"
+                            alt="OpenGL"
+                        />
+                        <span>OpenGL</span>
+                    </div>
+                    <div class="tech-pill">
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/opencv/opencv-original-wordmark.svg"
+                            alt="OpenCV"
+                        />
+                        <span>OpenCV</span>
+                    </div>
+                    <div class="tech-pill">
+                        <img
+                            src="https://the-green-one-game.s3.us-west-004.backblazeb2.com/JavaFX_Logo.png"
+                            alt="JavaFX"
+                        />
+                        <span>JavaFX</span>
+                    </div>
+                    <div class="tech-pill">
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original-wordmark.svg"
+                            alt="Blender"
+                        />
+                        <span>Blender</span>
+                    </div>
+                    <div class="tech-pill">
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+                            alt="JavaScript"
+                        />
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="tech-pill">
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original-wordmark.svg"
+                            alt="jQuery"
+                        />
+                        <span>jQuery</span>
+                    </div>
+                    <div class="tech-pill">
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg"
+                            alt="MySQL"
+                        />
+                        <span>MySQL</span>
+                    </div>
+                    <div class="tech-pill">
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/neo4j/neo4j-original-wordmark.svg"
+                            alt="Neo4j"
+                        />
+                        <span>Neo4j</span>
+                    </div>
+                    <div class="tech-pill">
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original-wordmark.svg"
+                            alt="HTML5"
+                        />
+                        <span>HTML5</span>
+                    </div>
+                    <div class="tech-pill">
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original-wordmark.svg"
+                            alt="CSS3"
+                        />
+                        <span>CSS3</span>
+                    </div>
+                    <div class="tech-pill">
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/matlab/matlab-original.svg"
+                            alt="Matlab"
+                        />
+                        <span>Matlab</span>
+                    </div>
+                    <div class="tech-pill">
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original-wordmark.svg"
+                            alt="Git"
+                        />
+                        <span>Git</span>
+                    </div>
+                    <div class="tech-pill">
+                        <img
+                            src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/photoshop/photoshop-plain.svg"
+                            alt="Photoshop"
+                        />
+                        <span>Photoshop</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="section-wrap" id="gallery-section">
+            <section id="gallery">
+                <div class="label rv" data-i18n="gallery_label">03 — Gallery</div>
+                <h2 class="sec-title rv rv-delay-1" data-i18n="gallery_title">See The <em>World</em></h2>
+                <div class="gallery-container rv rv-delay-2">
+                    <div
+                        class="fotorama"
+                        data-autoplay="3500"
+                        data-arrows="true"
+                        data-swipe="true"
+                        data-click="true"
+                        data-loop="true"
+                        data-fit="contain"
+                        data-width="100%"
+                        data-ratio="16/9"
+                        data-nav="thumbs"
+                        data-thumbwidth="80"
+                        data-thumbheight="52">
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMzAzMDM2MC5wbmc=/original/V%2BAA66.png" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzMzMC5qcGc=/original/2JaGC2.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzMzMi5qcGc=/original/VGkH1F.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzMzMS5qcGc=/original/wPeIh2.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xNzU3MjM5NC5wbmc=/original/b6fI1M.png" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xODM4MDI4Ny5wbmc=/original/BHn2H8.png" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzMzNC5qcGc=/original/YZ%2FXEm.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM0Mi5qcGc=/original/JU1H1A.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xODE5MDY1OC5wbmc=/original/2lJGnn.png" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM0MS5qcGc=/original/QEFt82.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xODQ5NzU5Ni5qcGc=/original/p%2B%2FLel.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzMzNi5qcGc=/original/k1bCM7.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzMzOS5qcGc=/original/HhAJc9.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM0MC5qcGc=/original/7pcD9a.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzMzOC5qcGc=/original/z13jGk.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM0NC5wbmc=/original/QwbnBP.png" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM0My5qcGc=/original/0he4fL.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM0OS5qcGc=/original/ieRpLF.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM1MC5qcGc=/original/YNxyPU.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xNTMxOTU0Ni5wbmc=/original/ZJWhRp.png" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xNTMxOTU0Ny5wbmc=/original/9hGDwr.png" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM1My5qcGc=/original/Wfqftc.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM1Mi5qcGc=/original/XNOJ%2BE.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xNTMxOTU0NS5wbmc=/original/yXPGTg.png" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xNzkwMDE3My5qcGc=/original/Ur5xg1.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM1OS5qcGc=/original/VW2P8E.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM2Mi5qcGc=/original/ihYIcw.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM1OC5qcGc=/original/zzyvIz.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM2MS5qcGc=/original/iSQKaL.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM2My5qcGc=/original/%2BgEm2Z.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM2MC5qcGc=/original/5rANCh.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM3MC5qcGc=/original/3%2B%2FHOs.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM2OC5qcGc=/original/TDpQju.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xNzYxMjEwMC5qcGc=/original/RIbG%2FQ.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM3MS5qcGc=/original/TtYUkN.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM2OS5qcGc=/original/wuOuMY.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xNTIzMjE1NS5wbmc=/original/u0IR8m.png" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjk4ODY5My5wbmc=/original/3wl%2Fkn.png" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM3Ni5qcGc=/original/XFr91F.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM4MC5qcGc=/original/IwURos.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM3OS5qcGc=/original/1UQiNf.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM3NC5qcGc=/original/USdsZ1.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjk4ODY5Mi5wbmc=/original/Y2gTEa.png" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM3My5qcGc=/original/uVP9pw.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM3Ny5qcGc=/original/OjrYj%2F.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM3NS5qcGc=/original/QMqIpr.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xMjU5MzM4Mi5qcGc=/original/%2FcMbEZ.jpg" />
+                        <img src="https://img.itch.zone/aW1hZ2UvMTg3NjMwOS8xODIyODE2MC5qcGc=/original/O2iFyH.jpg" />
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="section-wrap alt" id="download-section">
+            <section id="download">
+                <div class="label rv" data-i18n="download_label">04 — Download</div>
+                <h2 class="sec-title rv rv-delay-1" data-i18n="download_title">Play For <em>$1.00</em></h2>
+                <div class="dl-card rv rv-delay-2">
+                    <div class="dl-stats">
+                        <div class="dl-stat">
+                            <span class="dl-stat-val">$1.00</span>
+                            <div class="dl-stat-lbl" data-i18n="price_lbl">Price</div>
+                        </div>
+                        <div class="dl-stat-sep"></div>
+                        <div class="dl-stat">
+                            <span class="dl-stat-val">205MB</span>
+                            <div class="dl-stat-lbl" data-i18n="size_lbl">Size</div>
+                        </div>
+                        <div class="dl-stat-sep"></div>
+                        <div class="dl-stat">
+                            <span class="dl-stat-val">WIN</span>
+                            <div class="dl-stat-lbl" data-i18n="platform_lbl">Platform</div>
+                        </div>
+                    </div>
+                    <div class="itch-wrap">
+                        <iframe
+                            src="https://itch.io/embed/1876309?bg_color=020802&fg_color=39ff6e&link_color=1db954&border_color=0c1a0c"
+                            width="552"
+                            height="167"
+                            frameborder="0">
+                            <a href="https://muhab-joumaa.itch.io/the-green-one">The Green One By Muhab Joumaa</a>
+                        </iframe>
+                    </div>
+                    <div class="dl-badge">
+                        <i
+                            class="fas fa-circle"
+                            style="font-size: 7px; color: var(--green); animation: blink-badge 1.5s infinite"
+                        ></i>
+                        <span data-i18n="latest_version">VERSION: LATEST</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="section-wrap" id="expansion-section">
+            <section>
+                <div id="expansion-inner">
+                    <div class="expansion-img rv">
+                        <img
+                            src="https://the-green-one-game.s3.us-west-004.backblazeb2.com/tgo-eobl.png"
+                            alt="The Green One: End of Being Lost"
+                        />
+                        <div class="expansion-badge">NEW</div>
+                    </div>
+                    <div class="expansion-text rv rv-delay-2">
+                        <div class="label" data-i18n="expansion_label">05 — Expansion</div>
+                        <h2 class="sec-title" data-i18n="expansion_title">End Of <em>Being Lost</em></h2>
+                        <p data-i18n="expansion_desc">A new chapter has arrived.</p>
+                        <a
+                            href="https://muhab-joumaa.itch.io/the-green-one-end-of-being-lost"
+                            target="_blank"
+                            class="btn-danger"
+                            data-i18n="expansion_btn">
+                            <i class="fas fa-external-link-alt"></i> Explore Now
+                        </a>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="section-wrap alt">
+            <section id="network">
+                <div class="label rv" data-i18n="network_label">06 — Network</div>
+                <h2 class="sec-title rv rv-delay-1" data-i18n="network_title">Connected <em>Community</em></h2>
+                <div class="network-box rv rv-delay-2">
+                    <div class="net-icon">
+                        <img
+                            src="https://the-green-one-game.s3.us-west-004.backblazeb2.com/tgo-network-bg.png"
+                            alt="TGO Network"
+                        />
+                    </div>
+                    <div class="net-text">
+                        <h3 data-i18n="network_name">TGO NETWORK</h3>
+                        <p data-i18n="network_desc">A full social network is built directly into the game.</p>
+                        <div class="net-pill" data-i18n="network_pill">FREE TO JOIN · BUILT-IN</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="section-wrap" id="sponsor-section">
+            <section id="sponsor">
+                <div class="label rv" data-i18n="support_label">07 — Support</div>
+                <h2 class="sec-title rv rv-delay-1" data-i18n="support_title">Support The <em>Developer</em></h2>
+                <p
+                    class="rv rv-delay-2"
+                    style="text-align: center; max-width: 560px; margin: 0 auto 2rem"
+                    data-i18n="support_desc"
+                >
+                    If you enjoy the game or appreciate the work behind it, consider sponsoring the development of
+                    future projects.
+                </p>
+                <div class="rv rv-delay-3" style="display: flex; justify-content: center">
+                    <iframe
+                        src="https://github.com/sponsors/MuhabJoumaa/card"
+                        title="Sponsor MuhabJoumaa"
+                        height="225"
+                        width="600"
+                        style="border: 0"
+                    >
+                    </iframe>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <div class="footer-brand">THE GREEN ONE</div>
+            <div class="footer-copy" data-i18n="footer_copy">&copy; 2023 Muhab Joumaa · All rights reserved</div>
+            <div class="footer-links">
+                <a href="https://www.facebook.com/mohab.jmah" target="_blank" title="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://muhab-joumaa.itch.io/the-green-one" target="_blank" title="Itch.io">
+                    <i class="fas fa-gamepad"></i>
+                </a>
+                <a href="https://github.com/MuhabJoumaa" target="_blank" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </footer>
+        <script src="script.js"></script>
+    </body>
 </html>
