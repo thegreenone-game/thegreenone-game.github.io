@@ -26,6 +26,24 @@
     --glow-red: 0 0 8px #ff2d2d, 0 0 24px rgba(255, 45, 45, 0.4);
 }
 
+#model-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+#sketchfab-bg {
+    width: 100%;
+    height: 100%;
+    border: none;
+    opacity: 0.55;
+    filter: brightness(0.6) saturate(1.3);
+    transform: scale(1.05);
+    pointer-events: none;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -185,6 +203,7 @@ body::after {
 
 #hero {
     position: relative;
+    z-index: 2;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -199,11 +218,9 @@ body::after {
 #hero-canvas {
     position: fixed;
     inset: 0;
-
     width: 100vw;
     height: 100vh;
-
-    z-index: 0;
+    z-index: 1;
     pointer-events: none;
 }
 .hero-ambient {
