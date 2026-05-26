@@ -1,28 +1,28 @@
-const cur = document.getElementById('cur');
-const ring = document.getElementById('cur-ring');
-let mx = 0, my = 0, rx = 0, ry = 0;
+    const cur = document.getElementById('cur');
+    const ring = document.getElementById('cur-ring');
+    let mx = 0, my = 0, rx = 0, ry = 0;
 
-document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
 
-function animCursor() {
-    rx += (mx - rx) * 0.18;
-    ry += (my - ry) * 0.18;
-    cur.style.left  = mx + 'px';
-    cur.style.top   = my + 'px';
-    ring.style.left = rx + 'px';
-    ring.style.top  = ry + 'px';
-    requestAnimationFrame(animCursor);
-}
-animCursor();
+    function animCursor() {
+        rx += (mx - rx) * 0.18;
+        ry += (my - ry) * 0.18;
+        cur.style.left  = mx + 'px';
+        cur.style.top   = my + 'px';
+        ring.style.left = rx + 'px';
+        ring.style.top  = ry + 'px';
+        requestAnimationFrame(animCursor);
+    }
+    animCursor();
 
-const hoverEls = document.querySelectorAll('a, button, .feat, .tech-pill');
-hoverEls.forEach(el => {
-    el.addEventListener('mouseenter', () => {
-        cur.style.transform = 'translate(-50%,-50%) scale(2.2)';
-        ring.style.width = '50px'; ring.style.height = '50px'; ring.style.opacity = '0.3';
-    });
-    el.addEventListener('mouseleave', () => {
-          cur.style.transform = 'translate(-50%,-50%) scale(1)';
+    const hoverEls = document.querySelectorAll('a, button, .feat, .tech-pill');
+    hoverEls.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            cur.style.transform = 'translate(-50%,-50%) scale(2.2)';
+            ring.style.width = '50px'; ring.style.height = '50px'; ring.style.opacity = '0.3';
+        });
+        el.addEventListener('mouseleave', () => {
+            cur.style.transform = 'translate(-50%,-50%) scale(1)';
             ring.style.width = '30px'; ring.style.height = '30px'; ring.style.opacity = '0.5';
         });
     });
@@ -104,7 +104,7 @@ hoverEls.forEach(el => {
         }
     }
 
-const translations = {
+    const translations = {
 
     en: {
         nav_about: "About",
