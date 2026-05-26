@@ -205,7 +205,7 @@
         gallery_label: "03 — Galerie",
         gallery_title: 'Sieh Die <em>Welt</em>',
 
-        download_label: "04 — Download",
+        download_label: "04 — Herunterladen",
         download_title: 'Spiele Für <em>$1.00</em>',
         price_lbl: "Preis",
         size_lbl: "Größe",
