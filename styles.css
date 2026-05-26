@@ -665,3 +665,28 @@
             background: var(--green3);
             box-shadow: var(--glow-sm);
         }
+
+body[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+body[dir="rtl"] .nav-links {
+    flex-direction: row-reverse;
+}
+
+body[dir="rtl"] .hero-actions {
+    flex-direction: row-reverse;
+}
+
+body[dir="rtl"] .network-box {
+    flex-direction: row-reverse;
+}
+
+body[dir="rtl"] .label::after {
+    background: linear-gradient(
+        to left,
+        rgba(57,255,110,0.3),
+        transparent
+    );
+}
