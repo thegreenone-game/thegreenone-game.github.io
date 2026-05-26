@@ -150,7 +150,7 @@ const translations = {
         about_label: "01 — About",
         about_title: "Survive The <em>Mountains</em>",
         about_p1:
-            "Enter the world of <strong>The Green One</strong> — a solo-crafted action-adventure platformer where survival is the only goal.",
+            "Enter the world of <strong>The Green One</strong> — a solo-crafted action-adventure platformer where survival from Morjo is the only goal.",
         about_p2: "Every mechanic, every system, every line of code was <strong>handcrafted by one developer</strong>.",
 
         feat1_name: "Mountain Survival",
@@ -214,7 +214,7 @@ const translations = {
         about_label: "01 — Über",
         about_title: "Überlebe Die <em>Berge</em>",
         about_p1:
-            "Betritt die Welt von <strong>The Green One</strong> — ein handgefertigtes Action-Adventure-Platformer, in dem Überleben das einzige Ziel ist.",
+            "Betritt die Welt von <strong>The Green One</strong> — ein handgefertigtes Action-Adventure-Platformer, in dem Überleben von Morjo das einzige Ziel ist.",
         about_p2:
             "Jede Mechanik, jedes System, jede Codezeile wurde <strong>von einem einzigen Entwickler erstellt</strong>.",
 
@@ -280,7 +280,7 @@ const translations = {
         about_label: "01 — О игре",
         about_title: "Выживи В <em>Горах</em>",
         about_p1:
-            "Добро пожаловать в мир <strong>The Green One</strong> — одиночного action‑adventure платформера, где цель одна — выжить.",
+            "Добро пожаловать в мир <strong>The Green One</strong> — одиночного action‑adventure платформера, где цель одна — выжить от Morjo.",
         about_p2:
             "Каждая механика, каждая система, каждая строка кода была <strong>создана одним разработчиком</strong>.",
 
@@ -344,7 +344,7 @@ const translations = {
 
         about_label: "01 — حول",
         about_title: "النجاة في <em>الجبال</em>",
-        about_p1: "ادخل عالم <strong>The Green One</strong> — لعبة منصات ومغامرات صُنعت بالكامل بهدف واحد: البقاء.",
+        about_p1: "ادخل عالم <strong>The Green One</strong> — لعبة منصات ومغامرات صُنعت بالكامل بهدف واحد: البقاء على قيد الحياة من مورجو Morjo.",
         about_p2: "كل ميكانيك، كل نظام، كل سطر برمجي تم <strong>تصميمه يدويًا بواسطة مطوّر واحد</strong>.",
 
         feat1_name: "النجاة في الجبال",
