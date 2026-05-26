@@ -61,7 +61,16 @@
         <canvas id="hero-canvas"></canvas>
         <div id="hero">
             <div class="hero-ambient"></div>
-            <!-- SVG unchanged -->
+            <svg class="mountain-silhouette" viewBox="0 0 1440 240" preserveAspectRatio="none">
+                <defs>
+                    <linearGradient id="mtn-fill" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="rgba(4,14,4,0.7)"/>
+                        <stop offset="100%" stop-color="rgba(2,8,2,1)"/>
+                    </linearGradient>
+                </defs>
+                <polygon points="0,240 180,75 320,140 510,22 700,115 880,38 1060,130 1240,55 1380,100 1440,70 1440,240" fill="rgba(2,8,2,0.6)"/>
+                <polygon points="0,240 140,110 280,165 460,60 640,150 820,70 1000,145 1180,85 1340,125 1440,100 1440,240" fill="url(#mtn-fill)"/>
+            </svg>
             <div class="hero-content">
                 <div class="hero-eyebrow" data-i18n="hero_eyebrow">INDIE GAME · WINDOWS</div>
                 <h1 class="hero-title" data-text="THE GREEN ONE">THE GREEN ONE</h1>
