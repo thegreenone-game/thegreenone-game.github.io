@@ -33,12 +33,18 @@
     <nav id="navbar">
         <a class="nav-logo" href="#">TGO</a>
         <ul class="nav-links">
-            <li><a href="#about-section">About</a></li>
-            <li><a href="#tech-section">Tech</a></li>
-            <li><a href="#gallery-section">Gallery</a></li>
-            <li><a href="#download-section">Download</a></li>
+            <li><a href="#about-section" data-i18n="nav_about">About</a></li>
+            <li><a href="#tech-section" data-i18n="nav_tech">Tech</a></li>
+            <li><a href="#gallery-section" data-i18n="nav_gallery">Gallery</a></li>
+            <li><a href="#download-section" data-i18n="nav_download">Download</a></li>
         </ul>
-        <a class="nav-cta" href="https://muhab-joumaa.itch.io/the-green-one" target="_blank">
+        <div class="lang-switcher">
+            <button onclick="setLanguage('en')">EN</button>
+            <button onclick="setLanguage('de')">DE</button>
+            <button onclick="setLanguage('ar')">AR</button>
+            <button onclick="setLanguage('ru')">RU</button>
+        </div>
+        <a class="nav-cta" href="https://muhab-joumaa.itch.io/the-green-one" target="_blank" data-i18n="nav_play">
             Play for $1.00 &nbsp;<i class="fas fa-arrow-right"></i>
         </a>
     </nav>
@@ -60,16 +66,16 @@
         </svg>
 
         <div class="hero-content">
-            <div class="hero-eyebrow">INDIE GAME · WINDOWS</div>
+            <div class="hero-eyebrow" data-i18n="hero_eyebrow">INDIE GAME · WINDOWS</div>
             <h1 class="hero-title" data-text="THE GREEN ONE">THE GREEN ONE</h1>
-            <span class="hero-sub">
+            <span class="hero-sub" data-i18n="hero_sub">
                 Survive. Fight. <em>Escape.</em> — A solo-crafted adventure<br>by <em>Muhab Joumaa</em>
             </span>
             <div class="hero-actions">
-                <a href="https://muhab-joumaa.itch.io/the-green-one" target="_blank" class="btn-neon">
+                <a href="https://muhab-joumaa.itch.io/the-green-one" target="_blank" class="btn-neon" data-i18n="hero_download">
                     <i class="fas fa-download"></i> Download for $1.00
                 </a>
-                <a href="#gallery-section" class="btn-ghost">
+                <a href="#gallery-section" class="btn-ghost" data-i18n="hero_gallery">
                     <i class="fas fa-images"></i> View Gallery
                 </a>
             </div>
@@ -82,7 +88,7 @@
             <div class="hero-char-glow"></div>
         </div>
 
-        <div class="scroll-cue">
+        <div class="scroll-cue" data-i18n="scroll_text">
             <div class="scroll-bar"></div>
             SCROLL
         </div>
@@ -92,11 +98,11 @@
         <section>
             <div id="about-inner">
                 <div class="about-body">
-                    <div class="label rv">01 — About</div>
-                    <h2 class="sec-title rv rv-delay-1">Survive The <em>Mountains</em></h2>
+                    <div class="label rv" data-i18n="about_label">01 — About</div>
+                    <h2 class="sec-title rv rv-delay-1" data-i18n="about_title">Survive The <em>Mountains</em></h2>
                     <div class="rv rv-delay-2">
-                        <p>Enter the world of <strong>The Green One</strong> — a solo-crafted action-adventure platformer where survival is the only goal. Navigate treacherous mountain terrain, battle relentless zombies, and race against time to escape.</p>
-                        <p>Every mechanic, every system, every line of code was <strong>handcrafted by one developer</strong> using Java, C++/OpenGL, and a suite of professional tools. A testament to what one passionate programmer can build.</p>
+                        <p data-i18n="about_p1">Enter the world of <strong>The Green One</strong> — a solo-crafted action-adventure platformer where survival is the only goal. Navigate treacherous mountain terrain, battle relentless zombies, and race against time to escape.</p>
+                        <p data-i18n="about_p2">Every mechanic, every system, every line of code was <strong>handcrafted by one developer</strong> using Java, C++/OpenGL, and a suite of professional tools. A testament to what one passionate programmer can build.</p>
                     </div>
                 </div>
                 <div class="feature-grid rv rv-delay-3">
