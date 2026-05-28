@@ -270,7 +270,7 @@ body::after {
     opacity: 0.5;
 }
 .hero-title {
-    font-family: var(--pixel);
+    font-family: var(--body);
     font-size: clamp(20px, 4.5vw, 56px);
     line-height: 1.45;
     color: #ffffff;
