@@ -252,7 +252,7 @@ body::after {
     max-width: 920px;
 }
 .hero-eyebrow {
-    display: block;
+    display: inline-flex;
     align-items: center;
     gap: 10px;
     font-family: var(--body);
