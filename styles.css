@@ -288,8 +288,8 @@ body::after {
     top: 0;
     left: 0;
     right: 0;
-    font-family: var(--pixel);
-    font-size: clamp(20px, 4.5vw, 56px);
+    font-family: var(--body);
+    font-size: clamp(24px, 6vw, 72px);
     line-height: 1.45;
 }
 .hero-title::before {
