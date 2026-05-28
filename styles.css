@@ -252,7 +252,7 @@ body::after {
     max-width: 920px;
 }
 .hero-eyebrow {
-    display: inline-flex;
+    display: block;
     align-items: center;
     gap: 10px;
     font-family: var(--body);
@@ -271,7 +271,7 @@ body::after {
 }
 .hero-title {
     font-family: var(--body);
-    font-size: clamp(24px, 6vw, 72px);
+    font-size: clamp(20px, 4.5vw, 56px);
     line-height: 1.45;
     color: #ffffff;
     text-shadow: var(--glow);
