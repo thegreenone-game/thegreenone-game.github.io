@@ -255,7 +255,7 @@ body::after {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    font-family: var(--pixel);
+    font-family: var(--body);
     font-size: 7px;
     color: var(--green2);
     letter-spacing: 4px;
